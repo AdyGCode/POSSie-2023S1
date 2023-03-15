@@ -1,18 +1,18 @@
 # Live Coding 2023-03-15
-def baby_shark():
-    print("Baby Shark, doo-doo, doo-doo")
-    print("Baby Shark, doo-doo, doo-doo")
-    print("Baby Shark, doo-doo, doo-doo")
-    print("Baby Shark")
+def lyric(activity):
+    line_end = "doo-doo, "*3
+    line_end = line_end[:-2]
+    for lyric_line in range(0, 3):
+        print(f"{activity}, {line_end}")
+    print(f"{activity}")
     print()
+
+def baby_shark():
+    lyric("Baby Shark")
 
 
 def mommy_shark():
-    print("Mommy Shark, doo-doo, doo-doo")
-    print("Mommy Shark, doo-doo, doo-doo")
-    print("Mommy Shark, doo-doo, doo-doo")
-    print("Mommy Shark")
-    print()
+    lyric("Mommy Shark")
 
 
 def daddy_shark():
@@ -74,13 +74,13 @@ def end_shark():
 def sing_along():
     baby_shark()
     mommy_shark()
-    daddy_shark()
-    grandma_shark()
-    grandad_shark()
-    hunting_shark()
-    run_away_shark()
-    safe_shark()
-    end_shark()
+    # daddy_shark()
+    # grandma_shark()
+    # grandad_shark()
+    # hunting_shark()
+    # run_away_shark()
+    # safe_shark()
+    # end_shark()
 
 
 if __name__ == "__main__":
