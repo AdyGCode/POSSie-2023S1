@@ -1,0 +1,16 @@
+apple
+banana
+cherry
+date
+fig
+grape
+kiwifruit
+lemon
+mandarin
+orange
+pear
+quince
+raspberry
+strawberry
+tangerine
+watermelon
