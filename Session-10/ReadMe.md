@@ -25,24 +25,48 @@ To start a mermaid diagram using:
 
 Read the Markdown file to see how to draw the flowchart below.
 
+In this example we have added extra padding spaces to make the code easier to visualise.
+
 ```mermaid
+
 flowchart TD
-    A ([Start]) --> B[Help Message]
+    A([Start]) -->      B[Display Help Message]
+    B          -->      D[[Get Target Word]]
+    D          -->      E[[Prompt for Guess]]
+    E          -->      F{Is it Valid?}
+    F          --Yes--> G[[Score Guess]]
+    F          --No-->  H[Invalid Guess Message]
+    H          -->      E
+    G          -->      I{Is Winner?}
+    I          --Yes--> J[Display Winning Message]
+    I          --No-->  K[Tries += 1]
+    K          -->      L{Tries > MAX?}
+    L          --Yes--> E
+    L          --No-->  M[Display Sorry You Lose...]
+    J          -->      C([End])
+    M          -->      C
+```
+
+In this example we have removed the extra padding spaces.
+
+```mermaid
+
+flowchart TD
+    A([Start]) --> B[Display Help Message]
     B --> D[[Get Target Word]]
     D --> E[[Prompt for Guess]]
     E --> F{Is it Valid?}
-    F -- Yes --> G[[Score Guess]]
-    F -- No --> H[Invalid Guess Message]
+    F --Yes--> G[[Score Guess]]
+    F --No-->  H[Invalid Guess Message]
     H --> E
     G --> I{Is Winner?}
-    I -- Yes --> J[Show Winning Message]
-    I -- No --> K[Tries += 1]
+    I --Yes--> J[Display Winning Message]
+    I --No-->  K[Tries += 1]
     K --> L{Tries > MAX?}
-    L -- Yes -->E
-    L -- No --> M[Display Sorry You Lose...]
-    J --> C([End])
-    M --> C
-    
+    L --Yes--> E
+    L --No-->  M[Display Sorry You Lose...]
+    J -->  C([End])
+    M -->  C
 ```
 
 ## OOP (Using Python)
