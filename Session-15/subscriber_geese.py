@@ -9,7 +9,6 @@
 
 # import paho mqtt client, aliased as mqtt
 import paho.mqtt.client as mqtt
-from datetime import datetime
 import json
 
 # Create the settings for our Subscriber
@@ -17,8 +16,8 @@ MQTT_HOST = "localhost"   # replace localhost with the computer name that MQTT i
 MQTT_PORT = 1883  # default MQTT port
 MQTT_KEEP_ALIVE = 300  # seconds - this keeps the connection "open"
 
-MQTT_CLIENT_NAME = "duck-on"  # Should (MUST) be unique!
-MQTT_TOPIC = "test/ducks"  # main topic: test, subtopic: ducks
+MQTT_CLIENT_NAME = "geese-on"  # Should (MUST) be unique!
+MQTT_TOPIC = "test/geese"  # main topic: test, subtopic: ducks
 
 # Instantiate an MQTT Client
 client = mqtt.Client(MQTT_CLIENT_NAME)
@@ -34,8 +33,8 @@ def on_message_callback(client, userdata, message):
     msg_data = str(msg.payload.decode("UTF-8"))
     data = json.loads(msg_data)
 
-    output = f"At {data['datetime']} it was {data['temp']} at location {data['client']}"
-    print(f"{output}")
+    print()
+    print(f"{data['message']}")
     print(f"Topic: {msg.topic} QoS: {msg.qos} Retain: {msg.retain}")
 
 # Listen for messages - call the "callback" when one is received.

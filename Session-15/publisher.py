@@ -7,6 +7,10 @@
 #               a MQTT topic on a Mosquitto Server running
 #               on the local computer (localhost).
 
+import time
+from random import randrange, uniform
+import json
+from datetime import datetime
 
 # import paho mqtt client, aliased as mqtt
 import paho.mqtt.client as mqtt
@@ -27,6 +31,17 @@ client.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEP_ALIVE)
 print(f"Sending message to MQTT broker {MQTT_HOST} on port {MQTT_PORT}")
 print(f"with the topic {MQTT_TOPIC}...")
 
-message_to_send = "Hello..."
 
-client.publish(MQTT_TOPIC, message_to_send)
+while True:
+    time.sleep(5)
+    temperature = uniform(20, 25)
+    now = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ+0800")
+    message_data = {
+        "client": MQTT_CLIENT_NAME,
+        "temp" : temperature,
+        "datetime": now
+    }
+    # convert the dictionary to JSON format
+    message_to_send = json.dumps(message_data)
+    print(f"Temperature is {temperature} at {now}")
+    client.publish(MQTT_TOPIC, message_to_send)
