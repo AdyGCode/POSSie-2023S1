@@ -16,13 +16,13 @@ eg: mosquitto-2.0.15-install-windows-x64.exe
   If you do, you will need to understand that it is running in the 
   background automatically, and will need you to use the Task Manager
   to stop it. Also it re-runs every time you reboot your PC.
-  ![Eclipse-Mosquitto-Setup-No-Service.png](images/Eclipse-Mosquitto-Setup-No-Service.png)
+- ![Eclipse-Mosquitto-Setup-No-Service.png](images/Eclipse-Mosquitto-Setup-No-Service.png)
 - Click Next
 - Select where you want to install Mosquitto. Because we work with
   different services, we will often install Mosquitto in a new folder:
   `c:\MQTT\servers\mosquitto` which means we are able to add other 
   services and clients when we want to.
-  ![Eclipse-Mosquitto-Setup-Path.png](images/Eclipse-Mosquitto-Setup-Path.png)
+- ![Eclipse-Mosquitto-Setup-Path.png](images/Eclipse-Mosquitto-Setup-Path.png)
 - Click Install, and then Finish when you are done.
 
 ## Adding Mosquitto to the Path
@@ -34,10 +34,11 @@ line anywhere, use the following steps
 - Click the Windows start button (or press the Windows Key)
 - Type in `env`
 - Open the "Edit System Environment Variables" option
-- Click on the Environment Variables button ![System-Properties.png](images/System-Properties.png)
+- Click on the Environment Variables button
+- ![System-Properties.png](images/System-Properties.png)
 - Select either the system path (everyone who uses the computer) or 
   user path (just your login)
-  ![Environment-Variables.png](images/Environment-Variables.png)
+- ![Environment-Variables.png](images/Environment-Variables.png)
 - Click Edit
 - Check to see if the path you used in the installer is listed, if not
   - Click on NEW
@@ -47,7 +48,7 @@ line anywhere, use the following steps
     - `c:\MQTT\servers\mosquitto` or
     - `C:\Program Files\mosquitto`
   - This image shows both being added:
-    ![Edit-environment-variable.png](images/Edit-environment-variable.png)
+  - ![Edit-environment-variable.png](images/Edit-environment-variable.png)
   - Click OK
 - Click on OK
 - Click on OK
@@ -102,11 +103,23 @@ same time, as is shown in the diagram above.
 Each publisher is a program that is run on a CPU/Computer, or MCU
 (Micro-Controller Unit). Likewise for the subscribers.
 
+It is also possible for a subscriber to listen to multiple message 
+topics.
+
 MQTT is very lightweight, so it is possible to write code and run it on 
 a device such as a ESP-32, Raspberry Pi Pico, or similar.
 
-The applications may serve both Publisher and Subscriber functions by 
-acting as a "master controller". For example, in a car-park.
+Examples of working Publishers and Subscribers are shown in:
+- [publisher.py](publisher.py)
+- [subscriber.py](subscriber.py)
+- [subscriber_geese.py](subscriber_geese.py)
+- [publisher_subscriber.py](publisher_subscriber.py)
+- [subscriber_to_many.py](subscriber_to_many.py)
+
+Applications may serve both Publisher and Subscriber functions by 
+acting as a type of "master controller". For example, in a car-park.
+
+## Car Park
 
 A car-park has one or more entries, and one or more exits. It usually
 has displays that give details such as the current time, the 
@@ -116,7 +129,7 @@ or if the car-park is full.
 At the heart of this, there will be a "Car Park Controller" that will
 listen to the entry/entries and exits/exits and track spaces that are
 available. When this value changes it would publish the new 
-information to the displays so they are able to update themselves.
+information to the displays, so they are able to update themselves.
 
 Likewise, a temperature sensor in the car park would send its data to 
 the controller, and the controller would update the displays with 
